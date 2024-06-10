@@ -1,3 +1,5 @@
+// Section.tsx
+
 import React from 'react';
 import styled from 'styled-components';
 import { SectionProps } from './Section.types';
@@ -11,10 +13,16 @@ const StyledSection = styled.section<SectionProps>`
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'auto')};
 `;
 
-const Section: React.FC<SectionProps> = ({ children, background, disabled = false }) => (
-  <StyledSection background={background} disabled={disabled}>
-    {children}
-  </StyledSection>
-);
+const Section: React.FC<SectionProps> = ({ children, background, disabled = false, visibility = false }) => {
+  if (visibility) {
+    return null; // Hide the component when visibility is true
+  }
+
+  return (
+    <StyledSection background={background} disabled={disabled}>
+      {children}
+    </StyledSection>
+  );
+};
 
 export default Section;
