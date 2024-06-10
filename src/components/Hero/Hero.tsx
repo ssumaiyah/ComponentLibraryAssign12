@@ -4,7 +4,7 @@ import { HeroProps } from './Hero.types';
 
 interface StyledHeroProps {
   background?: string;
-  disabled?: boolean;  // Include disabled here
+  disabled?: boolean;
 }
 
 const StyledHero = styled.div<StyledHeroProps>`
@@ -27,11 +27,17 @@ const Subtitle = styled.h2`
   font-weight: 300;
 `;
 
-const Hero: React.FC<HeroProps> = ({ title, subtitle, background, disabled = false }) => (
-  <StyledHero background={background} disabled={disabled}>
-    <Title>{title}</Title>
-    {subtitle && <Subtitle>{subtitle}</Subtitle>}
-  </StyledHero>
-);
+const Hero: React.FC<HeroProps> = ({ title, subtitle, background, disabled = false, visibility = false }) => {
+  if (visibility) {
+    return null; // Component hidden when visibility is true
+  }
+
+  return (
+    <StyledHero background={background} disabled={disabled}>
+      <Title>{title}</Title>
+      {subtitle && <Subtitle>{subtitle}</Subtitle>}
+    </StyledHero>
+  );
+};
 
 export default Hero;
