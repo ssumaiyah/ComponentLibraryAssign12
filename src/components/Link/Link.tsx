@@ -1,3 +1,5 @@
+// Link.tsx
+
 import React from 'react';
 import styled from 'styled-components';
 import { LinkProps } from './Link.types';
@@ -16,10 +18,16 @@ const StyledLink = styled.a<StyledLinkProps>`
   }
 `;
 
-const Link: React.FC<LinkProps> = ({ href, children, color, disabled = false }) => (
-  <StyledLink href={disabled ? undefined : href} color={color} disabled={disabled}>
-    {children}
-  </StyledLink>
-);
+const Link: React.FC<LinkProps> = ({ href, children, color, disabled = false, visibility = false }) => {
+  if (visibility) {
+    return null; // Hide the component when visibility is true
+  }
+
+  return (
+    <StyledLink href={disabled ? undefined : href} color={color} disabled={disabled}>
+      {children}
+    </StyledLink>
+  );
+};
 
 export default Link;
