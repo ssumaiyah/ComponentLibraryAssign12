@@ -1,5 +1,3 @@
-// Image.stories.tsx
-
 import { Meta, StoryFn } from '@storybook/react';
 import Image from './Image';
 import { ImageProps } from './Image.types';
@@ -60,3 +58,18 @@ Hidden.args = {
   size: '150px',
   visibility: true, // Component is hidden
 };
+
+export const Responsive = Template.bind({});
+Responsive.args = {
+  src: 'https://via.placeholder.com/800x400',
+  alt: 'Responsive Image',
+  visibility: false, // Component is visible by default
+};
+
+Responsive.decorators = [
+  (Story) => (
+    <div style={{ width: '50%', margin: 'auto' }}>
+      <Story />
+    </div>
+  ),
+];

@@ -1,15 +1,21 @@
-// Image.tsx
-
 import React from 'react';
 import styled from 'styled-components';
 import { ImageProps } from './Image.types';
 
-const StyledImage = styled.img<ImageProps>`
-  width: ${({ size }) => size || '100%'};
+interface StyledImageProps {
+  size?: string;
+  shape?: 'square' | 'round';
+  disabled?: boolean;
+}
+
+const StyledImage = styled.img<StyledImageProps>`
+  max-width: ${({ size }) => size || '100%'};
+  width: 100%;
   height: auto;
   border-radius: ${({ shape }) => (shape === 'round' ? '50%' : '0')};
   opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'auto')};
+  display: block;
 `;
 
 const Image: React.FC<ImageProps> = ({ src, alt, size, shape, disabled = false, visibility = false }) => {
