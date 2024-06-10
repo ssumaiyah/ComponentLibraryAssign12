@@ -1,3 +1,5 @@
+// Text.tsx
+
 import React from 'react';
 import styled from 'styled-components';
 import { TextProps } from './Text.types';
@@ -16,10 +18,16 @@ const StyledText = styled.span<TextProps>`
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'auto')};
 `;
 
-const Text: React.FC<TextProps> = ({ children, size, bold, underline, disabled = false }) => (
-  <StyledText size={size} bold={bold} underline={underline} disabled={disabled}>
-    {children}
-  </StyledText>
-);
+const Text: React.FC<TextProps> = ({ children, size, bold, underline, disabled = false, visibility = false }) => {
+  if (visibility) {
+    return null; // Hide the component when visibility is true
+  }
+
+  return (
+    <StyledText size={size} bold={bold} underline={underline} disabled={disabled}>
+      {children}
+    </StyledText>
+  );
+};
 
 export default Text;
