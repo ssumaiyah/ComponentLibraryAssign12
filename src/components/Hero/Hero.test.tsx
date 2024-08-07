@@ -2,42 +2,40 @@
 
 import React from 'react';
 import { render, screen } from '@testing-library/react';
-import '@testing-library/jest-dom/extend-expect'; // for the `toBeInTheDocument` matcher
+import '@testing-library/jest-dom';
 import Hero from './Hero';
 import { HeroProps } from './Hero.types';
 
+// Helper function to render the component with default props
+const renderHero = (props: Partial<HeroProps> = {}) => {
+  return render(
+    <Hero title="Test Title" subtitle="Test Subtitle" background="lightblue" {...props} />
+  );
+};
+
 describe('Hero Component', () => {
-  it('renders title and subtitle correctly', () => {
-    render(<Hero title="Hero Title" subtitle="This is a subtitle" background="lightblue" />);
-    
-    expect(screen.getByText('Hero Title')).toBeInTheDocument();
-    expect(screen.getByText('This is a subtitle')).toBeInTheDocument();
+  it('should render the title and subtitle', () => {
+    renderHero();
+    expect(screen.getByText('Test Title')).toBeInTheDocument();
+    expect(screen.getByText('Test Subtitle')).toBeInTheDocument();
   });
 
-  it('applies the correct background color', () => {
-    render(<Hero title="Hero Title" subtitle="This is a subtitle" background="lightgreen" />);
-    
-    const heroElement = screen.getByText('Hero Title').parentElement;
-    expect(heroElement).toHaveStyle('background: lightgreen');
+  it('should apply the correct background color', () => {
+    renderHero({ background: 'lightcoral' });
+    const heroElement = screen.getByText('Test Title').closest('div');
+    expect(heroElement).toHaveStyle('background: lightcoral');
   });
 
-  it('sets cursor to not-allowed when disabled', () => {
-    render(<Hero title="Hero Title" subtitle="This is a subtitle" background="lightblue" disabled={true} />);
-    
-    const heroElement = screen.getByText('Hero Title').parentElement;
+  it('should apply disabled styles when disabled is true', () => {
+    renderHero({ disabled: true });
+    const heroElement = screen.getByText('Test Title').closest('div');
+    expect(heroElement).toHaveStyle('opacity: 0.5');
     expect(heroElement).toHaveStyle('cursor: not-allowed');
   });
 
-  it('sets opacity to 0.5 when disabled', () => {
-    render(<Hero title="Hero Title" subtitle="This is a subtitle" background="lightblue" disabled={true} />);
-    
-    const heroElement = screen.getByText('Hero Title').parentElement;
-    expect(heroElement).toHaveStyle('opacity: 0.5');
-  });
-
-  it('does not render when visibility is false', () => {
-    render(<Hero title="Hero Title" subtitle="This is a subtitle" background="lightblue" visibility={true} />);
-    
-    expect(screen.queryByText('Hero Title')).toBeNull();
+  it('should not render the component if visibility is true', () => {
+    renderHero({ visibility: true });
+    expect(screen.queryByText('Test Title')).toBeNull();
+    expect(screen.queryByText('Test Subtitle')).toBeNull();
   });
 });
