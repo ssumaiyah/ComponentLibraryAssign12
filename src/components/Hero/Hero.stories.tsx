@@ -1,6 +1,9 @@
+// hero.stories.tsx
 import { Meta, StoryFn } from '@storybook/react';
 import Hero from './Hero';
 import { HeroProps } from './Hero.types';
+import { within } from '@storybook/testing-library';
+import { expect } from '@storybook/jest';
 
 export default {
   title: 'Components/Hero',
@@ -10,7 +13,7 @@ export default {
     subtitle: { control: 'text' },
     background: { control: 'color' },
     disabled: { control: 'boolean' },
-    visibility: { control: 'boolean' }, // Add visibility control
+    visibility: { control: 'boolean' },
   },
 } as Meta<typeof Hero>;
 
@@ -21,16 +24,31 @@ Primary.args = {
   title: 'Hero Title',
   subtitle: 'This is a subtitle',
   background: 'lightblue',
-  visibility: false, // Component is visible by default
+  visibility: false,
 };
 
+Primary.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  // Await the Promise returned by findByText
+  await expect(canvas.findByText('Hero Title')).resolves.toBeInTheDocument();
+  await expect(canvas.findByText('This is a subtitle')).resolves.toBeInTheDocument();
+};
+
+// hero.stories.tsx
 export const Disabled = Template.bind({});
 Disabled.args = {
   title: 'Hero Title',
   subtitle: 'This is a subtitle',
   background: 'lightblue',
   disabled: true,
-  visibility: false, // Component is visible by default
+  visibility: false,
+};
+
+Disabled.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const heroElement = await canvas.findByText('Hero Title');
+
+  expect(heroElement).toHaveStyle('cursor: not-allowed');
 };
 
 export const Hidden = Template.bind({});
@@ -38,5 +56,10 @@ Hidden.args = {
   title: 'Hero Title',
   subtitle: 'This is a subtitle',
   background: 'lightblue',
-  visibility: true, // Component is hidden
+  visibility: true,
+};
+
+Hidden.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  await expect(canvas.queryByText('Hero Title')).toBeNull();
 };

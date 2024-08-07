@@ -7,6 +7,9 @@ interface StyledImageProps {
   shape?: 'square' | 'round';
   disabled?: boolean;
 }
+export function sum(a: number, b: number) {
+  return a + b;
+ }
 
 const StyledImage = styled.img<StyledImageProps>`
   max-width: ${({ size }) => size || '100%'};

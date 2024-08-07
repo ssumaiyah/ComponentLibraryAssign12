@@ -13,6 +13,11 @@ const StyledSection = styled.section<SectionProps>`
   cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'auto')};
 `;
 
+export function sum(a: number, b: number) {
+  return a + b;
+ }
+
+ 
 const Section: React.FC<SectionProps> = ({ children, background, disabled = false, visibility = false }) => {
   if (visibility) {
     return null; // Hide the component when visibility is true

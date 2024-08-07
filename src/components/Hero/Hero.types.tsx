@@ -3,5 +3,5 @@ export interface HeroProps {
   subtitle: string;
   background: string;
   disabled?: boolean;
-  visibility?: boolean; // Add visibility prop
+  visibility?: boolean;
 }
