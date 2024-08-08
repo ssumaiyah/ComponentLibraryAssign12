@@ -7,14 +7,19 @@ interface StyledHeroProps {
   disabled?: boolean;
 }
 
-const StyledHero = styled.div<StyledHeroProps>`
-  padding: 40px;
-  background: ${({ background }) => background || 'lightblue'};
-  color: white;
-  text-align: center;
-  opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
-  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'auto')};
+export function sum(a: number, b: number) {
+  return a + b;
+ }
+
+ const StyledHero = styled.div<StyledHeroProps>`
+ padding: 40px;
+ background: ${({ background }) => background || 'lightblue'};
+ color: white;
+ text-align: center;
+ opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
+ cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'auto')};
 `;
+
 
 const Title = styled.h1`
   margin: 0;

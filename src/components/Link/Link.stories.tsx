@@ -1,8 +1,9 @@
-// Link.stories.tsx
-
+// link.stories.tsx
 import { Meta, StoryFn } from '@storybook/react';
 import Link from './Link';
 import { LinkProps } from './Link.types';
+import { within } from '@storybook/testing-library';
+import { expect } from '@storybook/jest';
 
 export default {
   title: 'Components/Link',
@@ -12,7 +13,7 @@ export default {
     children: { control: 'text' },
     color: { control: 'color' },
     disabled: { control: 'boolean' },
-    visibility: { control: 'boolean' }, // Add visibility control
+    visibility: { control: 'boolean' },
   },
 } as Meta<typeof Link>;
 
@@ -23,7 +24,13 @@ Primary.args = {
   href: '#',
   children: 'Primary Link',
   color: 'blue',
-  visibility: false, // Component is visible by default
+  visibility: false,
+};
+
+Primary.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const linkElement = await canvas.findByText('Primary Link');
+  await expect(linkElement).toBeInTheDocument();
 };
 
 export const Blue = Template.bind({});
@@ -31,7 +38,14 @@ Blue.args = {
   href: '#',
   children: 'Blue Link',
   color: 'blue',
-  visibility: false, // Component is visible by default
+  visibility: false,
+};
+
+Blue.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const linkElement = await canvas.findByText('Blue Link');
+  await expect(linkElement).toBeInTheDocument();
+  
 };
 
 export const Purple = Template.bind({});
@@ -39,7 +53,13 @@ Purple.args = {
   href: '#',
   children: 'Purple Link',
   color: 'purple',
-  visibility: false, // Component is visible by default
+  visibility: false,
+};
+
+Purple.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const linkElement = await canvas.findByText('Purple Link');
+  await expect(linkElement).toBeInTheDocument();
 };
 
 export const Disabled = Template.bind({});
@@ -48,7 +68,14 @@ Disabled.args = {
   children: 'Disabled Link',
   color: 'grey',
   disabled: true,
-  visibility: false, // Component is visible by default
+  visibility: false,
+};
+
+Disabled.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  const linkElement = await canvas.findByText('Disabled Link');
+  await expect(linkElement).toBeInTheDocument();
+  await expect(linkElement).toHaveStyle('cursor: not-allowed');
 };
 
 export const Hidden = Template.bind({});
@@ -56,5 +83,10 @@ Hidden.args = {
   href: '#',
   children: 'Hidden Link',
   color: 'red',
-  visibility: true, // Component is hidden
+  visibility: true,
+};
+
+Hidden.play = async ({ canvasElement }) => {
+  const canvas = within(canvasElement);
+  await expect(canvas.queryByText('Hidden Link')).toBeNull();
 };
