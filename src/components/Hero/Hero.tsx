@@ -9,17 +9,16 @@ interface StyledHeroProps {
 
 export function sum(a: number, b: number) {
   return a + b;
- }
+}
 
- const StyledHero = styled.div<StyledHeroProps>`
- padding: 40px;
- background: ${({ background }) => background || 'lightblue'};
- color: white;
- text-align: center;
- opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
- cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'auto')};
+const StyledHero = styled.div<StyledHeroProps>`
+  padding: 40px;
+  background: ${({ background }) => background || 'lightblue'};
+  color: white;
+  text-align: center;
+  opacity: ${({ disabled }) => (disabled ? 0.5 : 1)};
+  cursor: ${({ disabled }) => (disabled ? 'not-allowed' : 'auto')};
 `;
-
 
 const Title = styled.h1`
   margin: 0;
@@ -32,7 +31,11 @@ const Subtitle = styled.h2`
   font-weight: 300;
 `;
 
-const Hero: React.FC<HeroProps> = ({ title, subtitle, background, disabled = false, visibility = false }) => {
+const ImageContainer = styled.div`
+  margin-top: 20px;
+`;
+
+const Hero: React.FC<HeroProps> = ({ title, subtitle, background, disabled = false, visibility = false, image }) => {
   if (visibility) {
     return null; // Component hidden when visibility is true
   }
@@ -41,6 +44,7 @@ const Hero: React.FC<HeroProps> = ({ title, subtitle, background, disabled = fal
     <StyledHero background={background} disabled={disabled}>
       <Title>{title}</Title>
       {subtitle && <Subtitle>{subtitle}</Subtitle>}
+      {image && <ImageContainer>{image}</ImageContainer>}
     </StyledHero>
   );
 };

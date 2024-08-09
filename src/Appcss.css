@@ -1,0 +1,213 @@
+/* App.css */
+/* Global Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 0;
+    padding: 0;
+    color: #ed0c0c; /* Light text for contrast */
+    background-color: #000; /* Black background */
+}
+
+.main-layout {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+    padding: 2rem; /* Adjust as necessary */
+}
+
+/* Section Styles */
+.Section {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    padding: 20px;
+    background-color: #1c1a1a; /* Black background */
+    color: #e61818; /* Light text for contrast */
+}
+
+/* Home Section */
+.home {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 40px 20px;
+}
+
+.home header {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding: 10px 0;
+}
+
+.home nav a {
+    color: #1e90ff; /* Accent color for links */
+    text-decoration: none;
+    margin-left: 20px;
+    font-size: 1.1em;
+}
+
+.home nav a:hover {
+    text-decoration: underline;
+}
+
+.home .hero {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    background-color: black;
+}
+
+.home .hero img {
+    border-radius: 50%;
+    width: 200px;
+    height: 200px;
+    margin-right: 20px;
+}
+
+.home .hero .subtitle {
+    max-width: 600px;
+    text-align: left;
+}
+
+/* About Section */
+.about {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 40px 20px;
+    background-color: black;
+}
+
+.about a {
+    color: #1e90ff; /* Accent color for links */
+    text-decoration: none;
+    font-size: 1.1em;
+    margin-bottom: 20px;
+    background-color: black;
+}
+
+.about a:hover {
+    text-decoration: underline;
+    background-color: black;
+}
+
+.about .title {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #d6dee7; /* Accent color for title */
+    background-color: black;
+}
+
+.about .text {
+    background-color: #333; /* Darker background for text boxes */
+    padding: 15px;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+/* Skills Section */
+.skills {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 40px 20px;
+}
+
+.skills header {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+}
+
+.skills header a {
+    color: #1e90ff; /* Accent color for links */
+    text-decoration: none;
+    font-size: 1.1em;
+}
+
+.skills header a:hover {
+    text-decoration: underline;
+}
+
+.skills h2 {
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: #1e90ff; /* Accent color for heading */
+}
+
+.skills p {
+    font-size: 1.1em;
+}
+
+/* Contact Section */
+.contact {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 40px 20px;
+}
+
+.contact a {
+    color: #1e90ff; /* Accent color for links */
+    text-decoration: none;
+    font-size: 1.1em;
+    margin-bottom: 20px;
+}
+
+.contact a:hover {
+    text-decoration: underline;
+}
+
+.contact .title {
+    font-size: 2em;
+    margin-bottom: 20px;
+    color: #1e90ff; /* Accent color for title */
+}
+
+.contact .icons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+}
+
+.contact .icons .icon {
+    font-size: 1.5em;
+    color: #e0e0e0; /* Light color for icons */
+}
+
+.contact .icons .icon:hover {
+    color: #1e90ff; /* Accent color for icon hover */
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .home header {
+        justify-content: center;
+        padding: 10px;
+    }
+
+    .home .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .home .hero img {
+        margin: 0 0 20px 0;
+    }
+
+    .about, .skills, .contact {
+        padding: 20px;
+    }
+
+    .skills header {
+        justify-content: center;
+    }
+}
