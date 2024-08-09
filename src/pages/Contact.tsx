@@ -3,22 +3,28 @@ import Text from '../components/Text';
 import Section from '../components/Section';
 import Link from '../components/Link';
 import Icon from '../components/Icon';
+import './Contact.css';
 
-function Contact() {
+function Contact() { 
+  const homeSocialLinks = [
+    { icon: "twitter", url: "https://twitter.com" },
+    { icon: "github", url: "https://github.com/ssumaiyah" },
+    { icon: "linkedin", url: "https://www.linkedin.com/in/sumaiyah-sumaiyah-396b962a7/" },
+    { icon: "instagram", url: "https://www.instagram.com/samxu.04/"}
+  ];
+
   return (
-    <div className="contact">
-      <Link href="/" color="primary">Home</Link>
-      <Section>
-        <Text size="large">Contact me</Text>
+
+   
+      <Section className= "contact">
+        <h1 className="contact-heading">Contact me</h1><br></br><br></br>
         <div className="icons">
-          <Icon name="instagram" url="your-instagram-url-here" />
-          <Icon name="email" url="your-email-url-here" />
-          <Icon name="linkedin" url="your-linkedin-url-here" />
-          <Icon name="twitter" url="your-twitter-url-here" />
-          <Icon name="github" url="your-github-url-here" />
+          {homeSocialLinks.map((link, index) => (
+            <Icon key={index} name={link.icon} url={link.url} />
+          ))}
         </div>
       </Section>
-    </div>
+
   );
 }
 

@@ -5,5 +5,6 @@ export interface LinkProps {
   children: React.ReactNode;
   color?: string;
   disabled?: boolean;
-  visibility?: boolean; // Add visibility prop
+  visibility?: boolean;
+  className?: string; // Add visibility prop
 }

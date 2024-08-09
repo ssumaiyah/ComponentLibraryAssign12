@@ -6,5 +6,6 @@ export interface TextProps {
   bold?: boolean;
   underline?: boolean;
   disabled?: boolean;
-  visibility?: boolean; // Add visibility prop
+  visibility?: boolean;
+  className?: string; // Add visibility prop
 }

@@ -2,6 +2,7 @@ import React from 'react';
 
 interface FooterProps {
   links: { label: string; url: string; disabled?: boolean }[];
+  className?: string;
 }
 
 const Footer: React.FC<FooterProps> = ({ links }) => {

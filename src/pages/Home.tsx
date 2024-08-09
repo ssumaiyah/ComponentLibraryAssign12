@@ -1,10 +1,9 @@
 import React from 'react';
-import Hero from '../components/Hero';
-import Link from '../components/Link';
-import Image from '../components/Image';
-import Section from '../components/Section';
-import Text from '../components/Text';
-
+import Hero from '../components/Hero/Hero';
+import Link from '../components/Link/Link';
+import Image from '../components/Image/Image';
+import Section from '../components/Section/Section';
+import Text from '../components/Text/Text';
 
 function Home() {
   return (
@@ -17,8 +16,9 @@ function Home() {
           <Link href="/contact" color="primary">Contact</Link>
         </nav>
       </header>
-      <Section>
+      <Section className="section">
         <Hero
+          className="hero"
           title="SUMAIYAH"
           subtitle="A full stack web development student who is passionate, eager to learn and committed to building dynamic and user-friendly web applications."
           image={<Image src="./images/sam.jpg" alt="Profile" size="200px" shape="round" />}

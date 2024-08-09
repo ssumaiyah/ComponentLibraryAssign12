@@ -1,6 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import Icon from './Icon';
 
+
 test('renders primary icon', () => {
   render(<Icon type="primary" />);
   expect(screen.getByRole('img')).toBeInTheDocument(); // Adjust based on your actual rendering logic

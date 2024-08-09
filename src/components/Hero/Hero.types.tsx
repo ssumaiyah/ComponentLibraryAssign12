@@ -4,5 +4,6 @@ export interface HeroProps {
   background?: string;
   disabled?: boolean;
   visibility?: boolean;
-  image?: React.ReactNode; // New image prop added
+  image?: React.ReactNode;
+  className?: string; // New image prop added
 }

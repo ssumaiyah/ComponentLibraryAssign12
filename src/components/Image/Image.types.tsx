@@ -4,5 +4,6 @@ export interface ImageProps {
   size?: string;
   shape?: 'square' | 'round';
   disabled?: boolean;
-  visibility?: boolean; // Add visibility prop if you use it
+  visibility?: boolean;
+  className?: string; // Add visibility prop if you use it
 }
