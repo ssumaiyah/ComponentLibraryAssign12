@@ -19,6 +19,7 @@ export default {
   },
 } as Meta<typeof Icon>;
 
+
 const Template: StoryFn<IconProps> = (args) => <Icon {...args} />;
 
 export const Primary = Template.bind({});
