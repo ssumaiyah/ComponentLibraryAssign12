@@ -1,7 +1,7 @@
 export type IconProps = {
-  type?: 'primary' | 'disabled';
+  name: 'twitter' | 'github' | 'linkedin' | 'instagram';  // Required prop
+  url: string;  // Required prop
+  type?: 'primary' | 'disabled';  // Optional prop with specific values
   disabled?: boolean;
-  name?: string; // Add this line
-  url?: string;
-  className?: string;  // Add this line
+  className?: string;
 };

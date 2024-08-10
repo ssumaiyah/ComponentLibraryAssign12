@@ -1,5 +1,5 @@
 export type MenuProps = {
-    initialState?: 'open' | 'closed';
-    className?: string;
-  };
-  
+  initialState?: 'open' | 'closed';
+  className?: string;
+  disabled?: boolean;
+};
